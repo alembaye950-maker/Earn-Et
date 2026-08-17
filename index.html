@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EarnET — Watch & Earn</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <section id="auth" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand">Earn<span>ET</span></div>
+      <p class="muted">Watch verified ads and earn rewards.</p>
+
+      <div id="loginBox">
+        <h1>Welcome back</h1>
+        <form id="loginForm">
+          <label>Email<input id="loginEmail" type="email" required placeholder="you@example.com"></label>
+          <label>Password<input id="loginPassword" type="password" required placeholder="••••••••"></label>
+          <button class="primary" type="submit">Log in</button>
+        </form>
+        <p class="switch">Don't have an account? <button id="showSignup" class="link" type="button">Sign up</button></p>
+      </div>
+
+      <div id="signupBox" class="hidden">
+        <h1>Create account</h1>
+        <form id="signupForm">
+          <label>Full name<input id="signupName" required placeholder="Your name"></label>
+          <label>Email<input id="signupEmail" type="email" required placeholder="you@example.com"></label>
+          <label>Password<input id="signupPassword" type="password" minlength="6" required placeholder="At least 6 characters"></label>
+          <button class="primary" type="submit">Create account</button>
+        </form>
+        <p class="switch">Already have an account? <button id="showLogin" class="link" type="button">Log in</button></p>
+      </div>
+      <small class="legal">Prototype only: real advertising, identity verification and payments require a secure backend and approved payment/ad providers.</small>
+    </div>
+  </section>
+
+  <section id="main" class="hidden">
+    <header class="topbar">
+      <div class="brand">Earn<span>ET</span></div>
+      <button id="logout" class="ghost">Log out</button>
+    </header>
+
+    <main class="content">
+      <section id="watch" class="page active">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">WATCH & EARN</p>
+            <h1>Watch a 30-second ad.</h1>
+            <p>Complete verified ad views and receive <strong>$0.10</strong> per completed view.</p>
+          </div>
+          <div class="reward">$0.10</div>
+        </div>
+
+        <div class="ad-card">
+          <div class="ad-placeholder">
+            <span>ADVERTISEMENT</span>
+            <div class="play">▶</div>
+            <p>Demo advertisement area</p>
+          </div>
+          <div class="ad-info">
+            <div><strong>Sponsored video</strong><span>30 seconds</span></div>
+            <button id="watchBtn" class="primary">Start watching</button>
+          </div>
+          <div id="timerWrap" class="hidden">
+            <div class="progress"><div id="progress"></div></div>
+            <p id="timerText">30 seconds remaining</p>
+          </div>
+        </div>
+
+        <div class="notice">Rewards in this prototype are simulated. A production version must only credit users when an advertiser/network confirms a valid completed view.</div>
+      </section>
+
+      <section id="dashboard" class="page">
+        <div class="page-title"><p class="eyebrow">OVERVIEW</p><h1>Dashboard</h1></div>
+        <div class="stats">
+          <div class="stat"><span>Available balance</span><strong id="balance">$0.00</strong></div>
+          <div class="stat"><span>Ads completed</span><strong id="views">0</strong></div>
+          <div class="stat"><span>Today's views</span><strong id="today">0 / 100</strong></div>
+        </div>
+        <div class="card">
+          <h2>How it works</h2>
+          <div class="steps"><div><b>01</b> Watch a verified 30-sec ad.</div><div><b>02</b> Complete the view.</div><div><b>03</b> Earn $0.10.</div><div><b>04</b> Withdraw when your balance reaches $10.</div></div>
+        </div>
+      </section>
+
+      <section id="withdraw" class="page">
+        <div class="page-title"><p class="eyebrow">PAYOUTS</p><h1>Withdraw</h1></div>
+        <div class="limits"><span>Minimum <b>$10</b></span><span>Maximum <b>$100</b></span></div>
+        <form id="withdrawForm" class="card form-card">
+          <label>Amount (USD)<input id="amount" type="number" min="10" max="100" step="0.01" required placeholder="10.00"></label>
+          <label>Payment method
+            <select id="method">
+              <option>Telebirr</option>
+              <option>Commercial Bank of Ethiopia (CBE)</option>
+              <option>Bank transfer</option>
+            </select>
+          </label>
+          <label>Account / phone number<input id="account" required placeholder="Payment account"></label>
+          <button class="primary" type="submit">Request withdrawal</button>
+          <p class="muted small">Prototype: no real payment is sent. Production payouts require official provider integration and compliance.</p>
+        </form>
+        <div id="withdrawMessage"></div>
+      </section>
+
+      <section id="profile" class="page">
+        <div class="page-title"><p class="eyebrow">ACCOUNT</p><h1>Profile</h1></div>
+        <div class="card profile-card">
+          <div class="avatar" id="avatar">U</div>
+          <div><h2 id="profileName">User</h2><p id="profileEmail" class="muted">email</p></div>
+        </div>
+        <div class="card">
+          <h2>Invite friends</h2>
+          <p class="muted">Share your referral link. Referral rewards should only be credited when your business rules and qualifying actions are verified.</p>
+          <div class="invite"><input id="inviteLink" readonly><button id="copyInvite" class="secondary">Copy</button></div>
+          <p id="copyMsg" class="success"></p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-page="watch" class="nav active">▶<span>Watch</span></button>
+      <button data-page="dashboard" class="nav">▦<span>Dashboard</span></button>
+      <button data-page="withdraw" class="nav">$<span>Withdraw</span></button>
+      <button data-page="profile" class="nav">●<span>Profile</span></button>
+    </nav>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
